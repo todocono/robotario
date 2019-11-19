@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="25" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -13298,19 +13298,17 @@ Metric Code Size 5664</description>
 <part name="GND7" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="GND9" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="GND10" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
-<part name="DIODE" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="DIODE" device="DO-1N4148" package3d_urn="urn:adsk.eagle:package:6240748/1"/>
+<part name="DIODE" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="DIODE" device="DO-1N4148" package3d_urn="urn:adsk.eagle:package:6240748/1" value="1N4001"/>
 <part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="A4L-LOC" device="">
 <attribute name="AUTHOR" value="Y."/>
 </part>
 <part name="SUPPLY1" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
-<part name="R5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/10" package3d_urn="urn:adsk.eagle:package:6240597/1" value="10k"/>
-<part name="LDR2" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_14"/>
 <part name="SUPPLY7" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="GND11" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="MOT1" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
 <part name="SUPPLY2" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="MOT2" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
-<part name="LED2" library="WS2812B" deviceset="WS2812B" device="5050"/>
+<part name="LED1" library="WS2812B" deviceset="WS2812B" device="5050"/>
 <part name="BAT" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X2" device="" package3d_urn="urn:adsk.eagle:package:22435/2"/>
 <part name="SUPPLY9" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="GND5" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
@@ -13319,13 +13317,12 @@ Metric Code Size 5664</description>
 <part name="T1" library="new-t" deviceset="2N3904" device="" package3d_urn="urn:adsk.eagle:package:28523/2"/>
 <part name="GND2" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
 <part name="SUPPLY6" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
-<part name="R4" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/10" package3d_urn="urn:adsk.eagle:package:6240597/1" value="100"/>
+<part name="R4" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/10" package3d_urn="urn:adsk.eagle:package:6240597/1" value="1k"/>
 <part name="SUPPLY10" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="R9" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/10" package3d_urn="urn:adsk.eagle:package:6240597/1" value="5k"/>
 <part name="SWITCH" library="new-switch" deviceset="J2" device="X2MM" package3d_urn="urn:adsk.eagle:package:15506/1"/>
 <part name="SUPPLY8" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="GND8" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
-<part name="LDR1" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_14"/>
 <part name="C4" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="CPOL-US" device="E5-5" package3d_urn="urn:adsk.eagle:package:6240524/1" value="100 uF"/>
 <part name="C5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="CPOL-US" device="E5-5" package3d_urn="urn:adsk.eagle:package:6240524/1" value="100 uF"/>
 <part name="C3" library="adafruit" deviceset="C-US" device="050-024X044" value="0.1 uF "/>
@@ -13333,6 +13330,9 @@ Metric Code Size 5664</description>
 <part name="C1" library="adafruit" deviceset="C-US" device="050-024X044" value="0.1 uF"/>
 <part name="IR" library="TCRT5000L-edit" deviceset="TCRT5000L" device=""/>
 <part name="GND12" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="GND" device=""/>
+<part name="R5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="R-US_" device="0207/10" package3d_urn="urn:adsk.eagle:package:6240597/1" value="10k"/>
+<part name="LDR1" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_14"/>
+<part name="LDR2" library="photo-elements" library_urn="urn:adsk.eagle:library:323" deviceset="A10" device="" package3d_urn="urn:adsk.eagle:package:22201/1" technology="50_14"/>
 </parts>
 <sheets>
 <sheet>
@@ -13345,19 +13345,19 @@ Metric Code Size 5664</description>
 </instance>
 <instance part="R6" gate="G$1" x="186.69" y="107.95" smashed="yes" rot="R180">
 <attribute name="NAME" x="190.5" y="106.4514" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="190.5" y="111.252" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="190.5" y="103.632" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="R7" gate="G$1" x="186.69" y="146.05" smashed="yes" rot="R180">
 <attribute name="NAME" x="190.5" y="144.5514" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="190.5" y="149.352" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="R2" gate="G$1" x="27.94" y="91.44" smashed="yes" rot="R270">
-<attribute name="NAME" x="29.4386" y="90.17" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="24.638" y="95.25" size="1.778" layer="96" rot="R270"/>
+<attribute name="NAME" x="29.4386" y="90.17" size="1.778" layer="95"/>
+<attribute name="VALUE" x="29.718" y="87.63" size="1.778" layer="96"/>
 </instance>
 <instance part="R3" gate="G$1" x="27.94" y="101.6" smashed="yes" rot="R270">
-<attribute name="NAME" x="29.4386" y="111.76" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="24.638" y="105.41" size="1.778" layer="96" rot="R270"/>
+<attribute name="NAME" x="29.4386" y="104.14" size="1.778" layer="95"/>
+<attribute name="VALUE" x="29.718" y="100.33" size="1.778" layer="96"/>
 </instance>
 <instance part="CHG" gate="G$1" x="124.46" y="152.4" smashed="yes" rot="R180">
 <attribute name="NAME" x="130.81" y="146.685" size="1.778" layer="95" rot="R180"/>
@@ -13396,29 +13396,22 @@ Metric Code Size 5664</description>
 <instance part="SUPPLY1" gate="G$1" x="207.01" y="162.56" smashed="yes">
 <attribute name="VALUE" x="207.01" y="165.354" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="R5" gate="G$1" x="166.37" y="43.18" smashed="yes" rot="R270">
-<attribute name="NAME" x="167.8686" y="46.99" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="163.068" y="46.99" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="LDR2" gate="G$1" x="166.37" y="53.34" smashed="yes">
-<attribute name="NAME" x="168.91" y="53.34" size="1.778" layer="95"/>
-</instance>
 <instance part="SUPPLY7" gate="G$1" x="166.37" y="71.12" smashed="yes">
 <attribute name="VALUE" x="166.37" y="75.184" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="GND11" gate="1" x="166.37" y="33.02" smashed="yes"/>
-<instance part="MOT1" gate="G$1" x="217.17" y="153.67" smashed="yes">
-<attribute name="NAME" x="210.82" y="159.385" size="1.778" layer="95"/>
-<attribute name="VALUE" x="210.82" y="148.59" size="1.778" layer="96"/>
+<instance part="MOT1" gate="G$1" x="217.17" y="152.4" smashed="yes">
+<attribute name="NAME" x="210.82" y="158.115" size="1.778" layer="95"/>
+<attribute name="VALUE" x="210.82" y="147.32" size="1.778" layer="96"/>
 </instance>
 <instance part="SUPPLY2" gate="G$1" x="205.486" y="124.714" smashed="yes">
 <attribute name="VALUE" x="205.486" y="127.508" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="MOT2" gate="G$1" x="215.9" y="118.11" smashed="yes">
-<attribute name="NAME" x="209.55" y="123.825" size="1.778" layer="95"/>
-<attribute name="VALUE" x="209.55" y="113.03" size="1.778" layer="96"/>
+<instance part="MOT2" gate="G$1" x="215.9" y="114.3" smashed="yes">
+<attribute name="NAME" x="209.55" y="120.015" size="1.778" layer="95"/>
+<attribute name="VALUE" x="209.55" y="109.22" size="1.778" layer="96"/>
 </instance>
-<instance part="LED2" gate="G$1" x="81.28" y="53.34" smashed="yes"/>
+<instance part="LED1" gate="G$1" x="81.28" y="53.34" smashed="yes"/>
 <instance part="BAT" gate="G$1" x="63.5" y="152.4" smashed="yes" rot="R180">
 <attribute name="NAME" x="69.85" y="146.685" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="69.85" y="157.48" size="1.778" layer="96" rot="R180"/>
@@ -13428,8 +13421,8 @@ Metric Code Size 5664</description>
 </instance>
 <instance part="GND5" gate="1" x="76.2" y="137.16" smashed="yes"/>
 <instance part="R8" gate="G$1" x="149.86" y="154.94" smashed="yes" rot="R180">
-<attribute name="NAME" x="153.67" y="153.4414" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="153.67" y="158.242" size="1.778" layer="96" rot="R180"/>
+<attribute name="NAME" x="149.86" y="153.4414" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="151.13" y="150.622" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="T2" gate="G1" x="203.2" y="107.95" smashed="yes">
 <attribute name="NAME" x="200.66" y="113.03" size="1.778" layer="95"/>
@@ -13442,15 +13435,15 @@ Metric Code Size 5664</description>
 <attribute name="VALUE" x="22.86" y="165.354" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="R4" gate="G$1" x="22.86" y="157.48" smashed="yes" rot="R270">
-<attribute name="NAME" x="24.3586" y="160.02" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="19.558" y="161.29" size="1.778" layer="96" rot="R270"/>
+<attribute name="NAME" x="24.3586" y="158.75" size="1.778" layer="95"/>
+<attribute name="VALUE" x="24.638" y="156.21" size="1.778" layer="96"/>
 </instance>
 <instance part="SUPPLY10" gate="G$1" x="48.26" y="162.56" smashed="yes">
 <attribute name="VALUE" x="48.26" y="165.354" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="R9" gate="G$1" x="48.26" y="157.48" smashed="yes" rot="R270">
-<attribute name="NAME" x="49.7586" y="160.02" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="44.958" y="161.29" size="1.778" layer="96" rot="R270"/>
+<attribute name="NAME" x="51.0286" y="158.75" size="1.778" layer="95"/>
+<attribute name="VALUE" x="51.308" y="156.21" size="1.778" layer="96"/>
 </instance>
 <instance part="SWITCH" gate="G$1" x="91.44" y="160.02" smashed="yes" rot="R90">
 <attribute name="NAME" x="91.44" y="161.925" size="1.778" layer="95" rot="R90"/>
@@ -13460,9 +13453,6 @@ Metric Code Size 5664</description>
 <attribute name="VALUE" x="124.46" y="76.454" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="GND8" gate="1" x="124.46" y="33.02" smashed="yes"/>
-<instance part="LDR1" gate="G$1" x="179.07" y="53.34" smashed="yes">
-<attribute name="NAME" x="181.61" y="53.34" size="1.778" layer="95"/>
-</instance>
 <instance part="C4" gate="G$1" x="137.16" y="53.34" smashed="yes">
 <attribute name="NAME" x="138.176" y="53.975" size="1.778" layer="95"/>
 <attribute name="VALUE" x="138.176" y="49.149" size="1.778" layer="96"/>
@@ -13476,17 +13466,27 @@ Metric Code Size 5664</description>
 <attribute name="VALUE" x="125.476" y="49.149" size="1.778" layer="96"/>
 </instance>
 <instance part="C2" gate="G$1" x="193.04" y="157.48" smashed="yes">
-<attribute name="NAME" x="194.056" y="158.115" size="1.778" layer="95"/>
-<attribute name="VALUE" x="194.056" y="153.289" size="1.778" layer="96"/>
+<attribute name="NAME" x="183.896" y="155.575" size="1.778" layer="95"/>
+<attribute name="VALUE" x="183.896" y="153.289" size="1.778" layer="96"/>
 </instance>
 <instance part="C1" gate="G$1" x="193.04" y="119.38" smashed="yes">
-<attribute name="NAME" x="194.056" y="120.015" size="1.778" layer="95"/>
-<attribute name="VALUE" x="194.056" y="115.189" size="1.778" layer="96"/>
+<attribute name="NAME" x="183.896" y="117.475" size="1.778" layer="95"/>
+<attribute name="VALUE" x="183.896" y="115.189" size="1.778" layer="96"/>
 </instance>
 <instance part="IR" gate="G$1" x="35.56" y="149.86" smashed="yes">
 <attribute name="NAME" x="30.45076875" y="155.47308125" size="1.275690625" layer="95"/>
 </instance>
 <instance part="GND12" gate="1" x="48.26" y="137.16" smashed="yes"/>
+<instance part="R5" gate="G$1" x="166.37" y="53.34" smashed="yes" rot="R270">
+<attribute name="NAME" x="167.8686" y="54.61" size="1.778" layer="95"/>
+<attribute name="VALUE" x="168.148" y="52.07" size="1.778" layer="96"/>
+</instance>
+<instance part="LDR1" gate="G$1" x="166.37" y="43.18" smashed="yes">
+<attribute name="NAME" x="168.91" y="43.18" size="1.778" layer="95"/>
+</instance>
+<instance part="LDR2" gate="G$1" x="178.435" y="43.18" smashed="yes">
+<attribute name="NAME" x="180.975" y="43.18" size="1.778" layer="95"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -13512,12 +13512,12 @@ Metric Code Size 5664</description>
 <segment>
 <pinref part="U1" gate="A" pin="PB2_(SCK/USCK/SCL/ADC1/T0/INT0/PCINT2)"/>
 <wire x1="157.48" y1="105.41" x2="157.48" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="R5" gate="G$1" pin="1"/>
-<pinref part="LDR2" gate="G$1" pin="2"/>
 <wire x1="157.48" y1="48.26" x2="166.37" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="R5" gate="G$1" pin="2"/>
 <junction x="166.37" y="48.26"/>
-<pinref part="LDR1" gate="G$1" pin="2"/>
-<wire x1="166.37" y1="48.26" x2="179.07" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="LDR1" gate="G$1" pin="1"/>
+<pinref part="LDR2" gate="G$1" pin="1"/>
+<wire x1="166.37" y1="48.26" x2="178.435" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -13535,25 +13535,22 @@ Metric Code Size 5664</description>
 <segment>
 <pinref part="SUPPLY1" gate="G$1" pin="VCC"/>
 <pinref part="MOT1" gate="G$1" pin="1"/>
-<wire x1="214.63" y1="156.21" x2="207.01" y2="156.21" width="0.1524" layer="91"/>
-<wire x1="207.01" y1="156.21" x2="207.01" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="214.63" y1="154.94" x2="207.01" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="207.01" y1="154.94" x2="207.01" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="207.01" y1="160.02" x2="207.01" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="160.02" x2="207.01" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <junction x="207.01" y="160.02"/>
 </segment>
 <segment>
-<pinref part="LDR2" gate="G$1" pin="1"/>
 <pinref part="SUPPLY7" gate="G$1" pin="VCC"/>
 <wire x1="166.37" y1="71.12" x2="166.37" y2="58.42" width="0.1524" layer="91"/>
-<pinref part="LDR1" gate="G$1" pin="1"/>
-<wire x1="166.37" y1="58.42" x2="179.07" y2="58.42" width="0.1524" layer="91"/>
-<junction x="166.37" y="58.42"/>
+<pinref part="R5" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
 <wire x1="86.36" y1="68.58" x2="86.36" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="LED2" gate="G$1" pin="VDD"/>
+<pinref part="LED1" gate="G$1" pin="VDD"/>
 </segment>
 <segment>
 <wire x1="91.44" y1="157.48" x2="91.44" y2="152.4" width="0.1524" layer="91"/>
@@ -13587,8 +13584,8 @@ Metric Code Size 5664</description>
 <pinref part="SUPPLY2" gate="G$1" pin="VCC"/>
 <pinref part="MOT2" gate="G$1" pin="1"/>
 <wire x1="205.486" y1="124.714" x2="205.486" y2="121.92" width="0.1524" layer="91"/>
-<wire x1="205.486" y1="121.92" x2="205.486" y2="120.65" width="0.1524" layer="91"/>
-<wire x1="205.486" y1="120.65" x2="213.36" y2="120.65" width="0.1524" layer="91"/>
+<wire x1="205.486" y1="121.92" x2="205.486" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="205.486" y1="116.84" x2="213.36" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="121.92" x2="205.486" y2="121.92" width="0.1524" layer="91"/>
 <junction x="205.486" y="121.92"/>
 <pinref part="C1" gate="G$1" pin="1"/>
@@ -13598,7 +13595,7 @@ Metric Code Size 5664</description>
 <segment>
 <pinref part="GND7" gate="1" pin="GND"/>
 <wire x1="81.28" y1="35.56" x2="81.28" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="LED2" gate="G$1" pin="GND"/>
+<pinref part="LED1" gate="G$1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="GND9" gate="1" pin="GND"/>
@@ -13631,9 +13628,12 @@ Metric Code Size 5664</description>
 <pinref part="Z1" gate="G$1" pin="A"/>
 </segment>
 <segment>
-<pinref part="R5" gate="G$1" pin="2"/>
 <pinref part="GND11" gate="1" pin="GND"/>
+<pinref part="LDR1" gate="G$1" pin="2"/>
 <wire x1="166.37" y1="38.1" x2="166.37" y2="35.56" width="0.1524" layer="91"/>
+<junction x="166.37" y="38.1"/>
+<pinref part="LDR2" gate="G$1" pin="2"/>
+<wire x1="166.37" y1="38.1" x2="178.435" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="BAT" gate="G$1" pin="1"/>
@@ -13673,7 +13673,7 @@ Metric Code Size 5664</description>
 <wire x1="50.8" y1="102.87" x2="40.64" y2="102.87" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="102.87" x2="40.64" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="50.8" x2="68.58" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="LED2" gate="G$1" pin="DI"/>
+<pinref part="LED1" gate="G$1" pin="DI"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -13705,8 +13705,7 @@ Metric Code Size 5664</description>
 <segment>
 <pinref part="MOT2" gate="G$1" pin="2"/>
 <wire x1="205.74" y1="113.03" x2="205.74" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="205.74" y1="114.3" x2="205.74" y2="118.11" width="0.1524" layer="91"/>
-<wire x1="205.74" y1="118.11" x2="213.36" y2="118.11" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="114.3" x2="213.36" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="T2" gate="G1" pin="C"/>
 <wire x1="193.04" y1="114.3" x2="205.74" y2="114.3" width="0.1524" layer="91"/>
 <junction x="205.74" y="114.3"/>
@@ -13769,8 +13768,7 @@ Metric Code Size 5664</description>
 <net name="N$7" class="0">
 <segment>
 <pinref part="MOT1" gate="G$1" pin="2"/>
-<wire x1="214.63" y1="153.67" x2="207.01" y2="153.67" width="0.1524" layer="91"/>
-<wire x1="207.01" y1="153.67" x2="207.01" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="214.63" y1="152.4" x2="207.01" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="T1" gate="G1" pin="C"/>
 <wire x1="207.01" y1="152.4" x2="207.01" y2="151.13" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="152.4" x2="207.01" y2="152.4" width="0.1524" layer="91"/>
