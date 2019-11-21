@@ -44,7 +44,7 @@ void setup() {
   status = 6;
 }
 void loop() {
-  int sensorValue = analogRead(LDR); // read the value from the IR sensor
+  int sensorValue = analogRead(IR); // read the value from the IR sensor
 
   if (sensorValue > 0 && sensorValue <= 100) {
     pixels.setPixelColor(0, pixels.Color(75, 0, 0)); // Moderately bright red color.
