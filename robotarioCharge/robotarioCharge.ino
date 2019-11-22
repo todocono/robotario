@@ -79,6 +79,10 @@ void loop() {
       turn();              // when you sense the black tape, turn to avoid collision with the wall
       state = START;
       break;
+    case CONFIRM:               // make sure that it is a base station
+      confirmCharge();
+      state = START;
+      break;
     case CHARGE:
       waitCharge();        // wait and charge
       state = START;
@@ -94,10 +98,9 @@ void loop() {
       //    case LOWBAT:
       //      // lowBat();
       //      break;
-      //    case CONFIRM:               // make sure that it is blue
-      //      //confirmBase();
-      //      break;
 
+
+      //      //confirmBase();
       //    case CHARGED:
       //      waitCharge();        // wait and charge
       //      break;
@@ -109,29 +112,24 @@ void loop() {
 void updateStatus() {
   IRsensorValue = analogRead(IR); // read the value from the IR sensor
   delay(1);
-  LDRsensorValue = analogRead(LDR); // read the value from the LDR sensor\
+  LDRsensorValue = analogRead(LDR); // read the value from the LDR sensor
   delay(1);
   BATsensorValue = analogRead(BAT); // read the value from the BAT sensor
   delay(1);
 
-  int sensorValue = IRsensorValue;
-  //  if ( IRsensorValue > WALL) {
-  //
-  //  } else if (IRsensorValue > BASE) {
-  //
-  //  } else {
-  //
-  //  }
-
-  if (sensorValue > 0 && sensorValue <= 100) {
+  if (IRsensorValue > 0 && IRsensorValue <= 200) {
     pixels.setPixelColor(0, pixels.Color(75, 0, 0)); // Moderately bright red color.
     state = START;
-  } else if (sensorValue > 100 && sensorValue <= 500) {
+  } else if (IRsensorValue > 200 && IRsensorValue <= 400) {
     pixels.setPixelColor(0, pixels.Color(0, 75, 0)); // Moderately bright green color.
-    state = CHARGE;
-  } else if (sensorValue > 500 && sensorValue <= 900) {
+    state = START;
+  } else if ((IRsensorValue > 400 && IRsensorValue <= 900) && (state != CONFIRM)) {
     pixels.setPixelColor(0, pixels.Color(0, 0, 75)); // Moderately bright blue color.
-  } else if (sensorValue > 900) {
+    state = CONFIRM;
+  } else if ((IRsensorValue > 400 && IRsensorValue <= 900) && (state == CONFIRM)) {
+    pixels.setPixelColor(0, pixels.Color(75, 0, 75)); // Moderately bright purple color.
+    state = CHARGE;
+  } else if (IRsensorValue > 900) {
     pixels.setPixelColor(0, pixels.Color(255, 255, 255)); // Moderately bright green color.
     state = TURNING;
   }
@@ -143,12 +141,12 @@ void woodGo() {         //moves in zig zag
   //  pixels.show();
   analogWrite(M1,  SLOW * random(0, 2));
   analogWrite(M2, FAST );
-  delay (TZIGZAG * random(0, 5));
+ // delay (TZIGZAG * random(0, 5));  //we could do this with millis
   //  //  pixels.setPixelColor(0, pixels.Color(0, 125, 125)); // Moderately bright purple color.
   //  //  pixels.show();
-  analogWrite(M1, FAST );
-  analogWrite(M2, SLOW * random(0, 2));
-  delay (TZIGZAG * random(0, 5));
+//  analogWrite(M1, FAST );
+//  analogWrite(M2, SLOW * random(0, 2));
+ // delay (TZIGZAG * random(0, 5));
 }
 
 void restingAndWaiting() {
@@ -178,28 +176,30 @@ void findCharge() {
   // if it finds the charging marker, it goes to the next state
 }
 
-boolean confirmCharge() {
-  //moves a bit
-  //  analogWrite(M1, SLOW);
-  //  analogWrite(M2, SLOW);                            //                  { slow both motors down by changing speed from 100 to 70
-  //  delay(TCHECK);
-  //  analogWrite(M1, 0);
-  //  analogWrite(M2, 0);                            //                  { slow both motors down by changing speed from 100 to 70
-  //if it has been long enough in the marker, it moves to the next state
-  //  delay (10);
-
+boolean confirmCharge() { //moves a bit
+  analogWrite(M1, SLOW);
+  analogWrite(M2, SLOW);
+  delay(TCHECK);
+  analogWrite(M1, 0);
+  analogWrite(M2, 0);
+  delay(TCHECK);
+  analogWrite(M1, SLOW);
+  analogWrite(M2, SLOW);
+  delay(TCHECK);
+  analogWrite(M1, 0);
+  analogWrite(M2, 0);
 }
 
 void waitCharge() {
   analogWrite(M1, 0);
   analogWrite(M2, 0); //stop motors
-  for (int t = 1; t < 10; t++) {     //stays in this loop
+  for (int t = 1; t < 3; t++) {     //stays in this loop
     pixels.setPixelColor(0, pixels.Color(0, 0, 0)); // Moderately bright purple color.
     pixels.show();
     delay (1000);
     pixels.setPixelColor(0, pixels.Color(0, 75, 0)); // Moderately bright green color.
     pixels.show();
-    delay (100);
+    delay (10);
     //    pixels.setPixelColor(0, pixels.Color(0, 0, 75)); // Moderately bright blue color.
     //    pixels.show();
     //    delay (100);
