@@ -12,6 +12,8 @@
 #include <avr/power.h>
 #endif
 
+#define FAST    200   //value of the motor speed normal movement
+
 #define PIN            4  //Neopixel data pin               (pin 3 on DIP8)
 #define BAT            0  //ADC0, battery voltage divider   (pin 1 on DIP8)
 #define LDR            1  //ADC1, light sensor              (pin 7 on DIP8)
@@ -46,26 +48,14 @@ void setup() {
 void loop() {
   int sensorValue = analogRead(LDR); // read the value from the IR sensor
 
-  if (sensorValue > 0 && sensorValue <= 100) {
-    pixels.setPixelColor(0, pixels.Color(75, 0, 0)); // Moderately bright red color.
-  } else if (sensorValue > 100 && sensorValue <= 200) {
-    pixels.setPixelColor(0, pixels.Color(0, 75, 0)); // Moderately bright green color.
-  } else if (sensorValue > 200 && sensorValue <= 300) {
-    pixels.setPixelColor(0, pixels.Color(0, 0, 75)); // Moderately bright blue color.
-  } else if (sensorValue > 300 && sensorValue <= 400) {
+  if (sensorValue <= 400) {
     pixels.setPixelColor(0, pixels.Color(150, 0, 0)); // bright red color.
-  } else if (sensorValue > 400 && sensorValue <= 500) {
-    pixels.setPixelColor(0, pixels.Color(0, 150, 0)); //  bright green color.
-  } else if (sensorValue > 500 && sensorValue <= 600) {
-    pixels.setPixelColor(0, pixels.Color(0, 0, 150)); //  bright blue color.
-  } else if (sensorValue > 600 && sensorValue <= 700) {
-    pixels.setPixelColor(0, pixels.Color(250, 0, 0)); // very bright red color.
-  } else if (sensorValue > 700 && sensorValue <= 800) {
-    pixels.setPixelColor(0, pixels.Color(0, 250, 0)); // very bright green color.
-  } else if (sensorValue > 800 && sensorValue <= 900) {
-    pixels.setPixelColor(0, pixels.Color(0, 0, 250)); // very bright green color.
-  } else if (sensorValue > 900) {
+    analogWrite(M1, FAST);
+    analogWrite(M2, FAST );
+  } else {
     pixels.setPixelColor(0, pixels.Color(255, 255, 255)); // Moderately bright green color.
+    analogWrite(M1,  0);
+    analogWrite(M2, 0 );
   }
   pixels.show();
   delay(10);

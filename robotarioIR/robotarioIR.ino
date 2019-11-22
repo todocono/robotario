@@ -6,8 +6,7 @@
 #ifdef __AVR__
 #include <avr/power.h>
 #endif
-// Which pin on the Arduino is connected to the NeoPixels?
-// On a Trinket or Gemma we suggest changing this to 1
+
 #define PIN           4  //Neopixel data pin
 #define BAT           0  //ADC0, voltage divider to sense the battery
 #define LDR           1  //ADC1, light sensor

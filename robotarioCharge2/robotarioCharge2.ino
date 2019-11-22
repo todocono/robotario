@@ -12,8 +12,11 @@
 #define TCHECK   30  //time in ms to explore 
 #define TCHARGE  10   //time in minutes to recharge
 #define TSURE    5    //n times that it checked to be on the base
-#define TZIGZAG  30   //time between curves for a Zig Zag
-#define LIGHT   800   //value from ADC that indicates LDRs under the reflector
+#define TZIGZAG 100   //time between curves for a Zig Zag
+#define TEXPLORE 3000   //time between curves for a Zig Zag
+#define TRUN   3000   //time between curves for a Zig Zag
+
+#define LIGHT   400   //value from ADC that indicates LDRs under the reflector
 #define BAT     512   //value that indicates low battery
 #define BASE    200   //value that indicates possible recharging base found
 #define WALL    900   //value that indicates wall ahead
@@ -22,11 +25,11 @@
 #define START   0     // starting state of the device
 #define REST    1     // for resting and waiting for light
 #define EXPLORE 2     // after detecting light, it expores around
-#define RUNAWAY 3     // for running away
-#define TURNING 4     // turns away from the walls to avoid a collision
+#define RUN     3     // for running away
+#define TURN    6     // turns away from the walls to avoid a collision
 #define LOWBAT  5     // with low battery and looking for a charging station
 #define CONFIRM 6     // confirming it's a charging station
-#define CHARGE  7    // it's charging it's battery
+#define CHARGING  7    // it's charging it's battery
 #define CHARGED 8    // it's fully charged and it should go to a dark spot
 
 #define PIN            4  //Neopixel data pin               (pin 3 on DIP8)
@@ -44,6 +47,16 @@ int LDRsensorValue;
 int BATsensorValue;
 int charging = 0;
 
+
+int onState = LOW;
+
+unsigned long previousMillis = 0;        // will store last time on movement was updated
+unsigned long stepMillis = 0;        // will store last time on that step of state
+
+
+// constants won't change:
+const long interval = 100;           // interval at which to blink (milliseconds)
+const long stepTurn = 500;
 
 #include <Adafruit_NeoPixel.h>
 
@@ -69,32 +82,36 @@ void setup() {
 
 void loop() {
 
-  updateStatus();
+  updateSensors();
 
   switch (state) {
     case START:
+      stepMillis = millis();
+      state = EXPLORE;
+      break;
+    case REST:
       restingAndWaiting();             // wait for light
       break;
-    case RUNAWAY:
-      woodGo();             // wood  then go
+    case RUN:
+      runAway();             // wood  then go
       break;
-    case TURNING:
-      turn();              // when you sense the black tape, turn to avoid collision with the wall
-      state = START;
+    case TURN:
+      turning();              // when you sense the black tape, turn to avoid collision with the wall
       break;
-    case CONFIRM:               // make sure that it is a base station
-      confirmCharge();
-      state = START;
+    //  case CONFIRM:               // make sure that it is a base station
+    //  confirmCharge();
+    //  state = START;
+    //  break;
+    // case CHARGE:
+    //  waitCharge();        // wait and charge
+    // state = START;
+    // break;
+    //    case REST:
+    //      //restingAndWaiting();  // resting and waiting for light
+    //      break;
+    case EXPLORE:
+      woodGo();
       break;
-    case CHARGE:
-      waitCharge();        // wait and charge
-      state = START;
-      break;
-      //    case REST:
-      //      //restingAndWaiting();  // resting and waiting for light
-      //      break;
-      //    case EXPLORE:
-      //      break;
       //    case RUNAWAY:
       //      //runAway();           // when you are exposed to light, wait for a few seconds and then run away
       //      break;
@@ -112,7 +129,7 @@ void loop() {
   //  pixels.show();
 }
 
-void updateStatus() {
+void updateSensors() {
   IRsensorValue = analogRead(IR); // read the value from the IR sensor
   LDRsensorValue = analogRead(LDR); // read the value from the LDR sensor
   BATsensorValue = analogRead(BAT); // read the value from the BAT sensor
@@ -122,60 +139,108 @@ void updateStatus() {
   //    pixels.setPixelColor(0, pixels.Color(75, 0, 0)); // Moderately bright red color.
   //    state = START;
   //  } else (IRsensorValue > 200 &&
-  if ( (IRsensorValue <= 400)  && (LDRsensorValue <= 400 )) {
-    pixels.setPixelColor(0, pixels.Color(0, 75, 0)); // Moderately bright green color.
-    state = RUNAWAY;
-  } else if ((IRsensorValue <= 400)  && (LDRsensorValue > 400 )) {
-    pixels.setPixelColor(0, pixels.Color(0, 75, 0)); // Moderately bright green color.
-    state = START;
-  } else if ((IRsensorValue > 400 && IRsensorValue <= 900) && (state != CONFIRM)) {
-    pixels.setPixelColor(0, pixels.Color(0, 0, 75)); // Moderately bright blue color.
-    state = CONFIRM;
-  } else if ((IRsensorValue > 400 && IRsensorValue <= 900) && (state == CONFIRM)) {
-    pixels.setPixelColor(0, pixels.Color(75, 0, 75)); // Moderately bright purple color.
-    state = CHARGE;
-  } else if (IRsensorValue > 900) {
-    pixels.setPixelColor(0, pixels.Color(255, 255, 255)); // Moderately bright green color.
-    state = TURNING;
-  }
-  pixels.show();
+  //  if ( (IRsensorValue <= 400)  && (LDRsensorValue <= 400 ) && (state == REST)) {
+  //    pixels.setPixelColor(0, pixels.Color(75, 0, 0)); // Moderately bright green color.
+  //    state = RUNAWAY;
+  //  } else if ((IRsensorValue <= 400)  && (LDRsensorValue > 400 )  && (state == REST)) {
+  //    pixels.setPixelColor(0, pixels.Color(0, 75, 0)); // Moderately bright green color.
+  //    state = START;
+  //  } else if ((IRsensorValue > 400 && IRsensorValue <= 900) && (state != CONFIRM)) {
+  //    pixels.setPixelColor(0, pixels.Color(0, 0, 75)); // Moderately bright blue color.
+  //    state = CONFIRM;
+  //  } else if ((IRsensorValue > 400 && IRsensorValue <= 900) && (state == CONFIRM)) {
+  //    pixels.setPixelColor(0, pixels.Color(75, 0, 75)); // Moderately bright purple color.
+  //    state = CHARGE;
+  //  } else if (IRsensorValue > 900) {
+  //    pixels.setPixelColor(0, pixels.Color(25, 0, 0)); // Moderately bright green color.
+  //    state = TURNING;
+  //  }
+  // pixels.show();
 }
 
 void woodGo() {         //moves in zig zag
-  //  pixels.setPixelColor(0, pixels.Color(0, 0, 125)); // Moderately bright green color.
-  //  pixels.show();
-  analogWrite(M1, FAST);
-  analogWrite(M2, FAST);
-  // delay (TZIGZAG * random(0, 5));  //we could do this with millis
-  //  //  pixels.setPixelColor(0, pixels.Color(0, 125, 125)); // Moderately bright purple color.
-  //  //  pixels.show();
-  //  analogWrite(M1, FAST );
-  //  analogWrite(M2, SLOW * random(0, 2));
-  // delay (TZIGZAG * random(0, 5));
+  pixels.setPixelColor(0, pixels.Color(0, 25, 0)); // Moderately bright green color.
+  pixels.show();
+  //int n = random ( interval / 2, interval );
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= TZIGZAG) {
+    previousMillis = currentMillis;
+    if (onState == LOW) {
+      onState = HIGH;
+      analogWrite(M1, FAST);
+      analogWrite(M2, 0);
+    } else {
+      onState = LOW;
+      analogWrite(M1, 0);
+      analogWrite(M2, FAST);
+    }
+  }
+  if ( currentMillis  - stepMillis > TEXPLORE) {
+    stepMillis = currentMillis;
+    state = REST;
+  }
+  if (IRsensorValue > WALL) {
+    stepMillis = currentMillis;
+    state = TURN;
+  }
 }
 
 void restingAndWaiting() {
   analogWrite(M1,  0);
   analogWrite(M2, 0 );
+  pixels.setPixelColor(0, pixels.Color(0, 0, 0)); // off
+  pixels.show();
+
+
+  if (LDRsensorValue < LIGHT) {     // sense light to reactivate (it should go to sleep)
+    stepMillis = millis();
+    state = RUN;
+  }
+  //  if ( currentMillis  - stepMillis > TEXPLORE) {
+  //    stepMillis = millis();
+  //    state = REST;
+  //  }
 }
 
-//void runAway() {
-//  analogWrite(M1,  SLOW * random(0, 2));
-//  analogWrite(M2, FAST );
-//}
+void runAway() {
+  pixels.setPixelColor(0, pixels.Color(0, 0, 125)); // blue
+  pixels.show();
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= TZIGZAG * 10) {
+    previousMillis = currentMillis;
+    if (onState == LOW) {
+      onState = HIGH;
+      analogWrite(M1, FAST);
+      analogWrite(M2, 0);
+    } else {
+      onState = LOW;
+      analogWrite(M1, 0);
+      analogWrite(M2, FAST);
+    }
+  }
+  if ( currentMillis  - stepMillis > TRUN) {
+    stepMillis = currentMillis;
+    state = EXPLORE;
+  }
+  if (IRsensorValue > WALL) {
+    stepMillis = currentMillis;
+    state = TURN;
+  }
+}
 
-void turn() {
-  //  pixels.setPixelColor(0, pixels.Color(255, 0, 0)); //  bright red color.
-  //  pixels.show();
-  //int n = round(random(1, 2));  //TODO: sometimes turn one way, sometimes the other
-  analogWrite(M1, FAST);
-  analogWrite(M2, 0); //(n - 2)*FAST);                         //                  { turn
-  delay(500);// + (random(500)));                                   //                    turn for 500 milliseconds }
-  //  pixels.setPixelColor(0, pixels.Color(0, 0, 0)); // Moderately bright purple color.
-  //  pixels.show();
+void turning() {
+  pixels.setPixelColor(0, pixels.Color(45, 0, 0)); // light red
+  pixels.show();
   analogWrite(M1, 0);
   analogWrite(M2, 0);
-  delay(500);
+  delay(100);
+  analogWrite(M1, FAST);
+  analogWrite(M2, 0);
+  delay(random(50, 200));
+  analogWrite(M1, 0);
+  analogWrite(M2, 0);
+  delay(100);
+  state = START;
 }
 
 void findCharge() {
