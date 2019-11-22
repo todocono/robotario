@@ -190,7 +190,7 @@ void restingAndWaiting() {
   analogWrite(M2, 0 );
   pixels.setPixelColor(0, pixels.Color(0, 0, 0)); // off
   pixels.show();
-
+  delay(10);
 
   if (LDRsensorValue < LIGHT) {     // sense light to reactivate (it should go to sleep)
     stepMillis = millis();
